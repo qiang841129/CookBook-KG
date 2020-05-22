@@ -222,11 +222,11 @@ body {
 /*info的样式*/
 #info {
     position: absolute;
-    top: 0px;			/*10px*/
+    top: 0px;            /*10px*/
     /*bottom: 40px;*/
-    right: 10px;   		/*20px*/
-    text-align: right;		/*right*/
-    width: 253px;  		/*255px*/
+    right: 10px;           /*20px*/
+    text-align: right;        /*right*/
+    width: 253px;          /*255px*/
 }
 
 #info p {
@@ -300,19 +300,19 @@ body {
             <span style="border-top-left-radius: 0;border-bottom-left-radius: 0;position: relative;left: -5px;">Texts</span>
         </div>
 
-	<!-- 显示切换1 -->
+        <!-- 显示切换1 -->
         <div id="switch1">
             <span class="active" style="border-top-right-radius: 0;border-bottom-right-radius: 0;">On</span>
             <span style="border-top-left-radius: 0;border-bottom-left-radius: 0;position: relative;left: -5px;">Off</span>
         </div>
 
-	<!-- 显示切换2 -->
+        <!-- 显示切换2 -->
         <div id="switch2">
             <span class="active" style="border-top-right-radius: 0;border-bottom-right-radius: 0;">On</span>
             <span style="border-top-left-radius: 0;border-bottom-left-radius: 0;position: relative;left: -5px;">Off</span>
         </div>
 
-	<!-- 显示切换3 -->
+        <!-- 显示切换3 -->
         <div id="switch3">
             <span class="active" style="border-top-right-radius: 0;border-bottom-right-radius: 0;">On</span>
             <span style="border-top-left-radius: 0;border-bottom-left-radius: 0;position: relative;left: -5px;">Off</span>
@@ -329,17 +329,16 @@ body {
             <h4></h4>
         </div>
 
-	<!-- 提示 -->
+        <!-- 提示 -->
         <div id="tips"></div>
     </div>
-    /*
+    <!--
     <div style="text-align: center;position: relative;">
         <svg width="960" height="240" id="svg2" style="margin-right: 60px;">
-            <!-- D3 -->
             <g></g>
         </svg>
     </div>
-    */
+    -->
 
 </body>
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -348,8 +347,8 @@ body {
 $(document).ready(function() {
     // 定义svg变量，选出第一个图
     var svg = d3.select("#svg1"), 
-              width = svg.attr('width'), 
-              height = svg.attr('height');
+        width = svg.attr('width'), 
+        height = svg.attr('height');
 
     var names = ['菜品大类', '精品特色菜', '原料']
     var colors = ['#6ca46c', '#ca635f', '#4e88af'];
@@ -569,172 +568,98 @@ $(document).ready(function() {
         $(this).addClass('active')
 
         if ($(this).text() == 'On') {
-	    sw1 = true;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            sw1 = true;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
-                if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
-                    return 'inactive';
-                }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    /*
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
-                // 当前选中类型实体隐藏
-		if (d.group == 0) {
-		    return '';
-		}
-		if (d.group == 1 && sw2 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体隐藏
-		if (d.group == 0) {
-		    return '';
-		}
-		if (d.group == 1 && sw2 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
-                if (d.source.group == 0 || d.target.group == 0) {
+                if (d.group == 0 && sw1 == true) {
                     return '';
                 }
-		if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    */
-        }
-        else {
-	    sw1 = false;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    /*
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
-                // 当前选中类型实体隐藏
-		if (d.group == 0) {
-		    return 'inactive';
-		}
-		if (d.group == 1 && sw2 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体隐藏
-		if (d.group == 0) {
-		    return 'inactive';
-		}
-		if (d.group == 1 && sw2 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
-                if (d.source.group == 0 || d.target.group == 0) {
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
                     return 'inactive';
                 }
-		if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    */
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+                // 当前选中类型实体显示
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
+            });
+        }
+        else {
+            sw1 = false;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+                // 当前选中类型实体显示
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
+            });
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+                if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
+                    return 'inactive';
+                }
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
+            });
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+                // 当前选中类型实体显示
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
+            });
         }
     });
 
@@ -746,134 +671,97 @@ $(document).ready(function() {
         $(this).addClass('active')
 
         if ($(this).text() == 'On') {
-	    sw2 = true;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            sw2 = true;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
-                if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
-                    return 'inactive';
-                }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    /*
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 1) {
-		    return '';
-		}
-		if (d.group == 0 && sw1 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 1) {
-		    return '';
-		}
-		if (d.group == 0 && sw1 == false){
-		    return 'inactive';
-		}
-		if (d.group == 2 && sw3 == false){
-		    return 'inactive';
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
-                if (d.source.group == 1 || d.target.group == 1) {
+                if (d.group == 0 && sw1 == true) {
                     return '';
                 }
-		if ((d.source.group == 0 || d.target.group == 0) && sw1 == false){
-		    return 'inactive';
-		}
-		if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    */
-        }
-        else {
-	    sw2 = false;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
-                // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
-            });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
+            });
+        }
+        else {
+            sw2 = false;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+                // 当前选中类型实体显示
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
+            });
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+                if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
+                    return 'inactive';
+                }
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
+            });
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+                // 当前选中类型实体显示
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
         }
     });
@@ -886,97 +774,97 @@ $(document).ready(function() {
         $(this).addClass('active')
 
         if ($(this).text() == 'On') {
-	    sw3 = true;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            sw3 = true;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
         }
         else {
-	    sw3 = false;
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            sw3 = false;
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
         }
     });
@@ -995,16 +883,15 @@ $(document).ready(function() {
             // 去掉旧的<p></p>
             $('#info p').remove();
 
-            
-	    // 增加各个人物的头像
+            // 增加各个人物的头像
             if (typeof(info[name]) != "undefined") {
                 //avatar_ID = info[name]['ID'][0]
                 //if(outlier_avatar_ID.indexOf(avatar_ID) != -1) {
                 //    avatar_ID = avatar_ID + '0'
                 //}
-	    if ('主料' in info[name]){
-		    $('#info').append('<p>' + '<img src="https://raw.githubusercontent.com/ngl567/CookBook-KG/master/visualization/recipe_photo/' + name + '.jpg" />' + '</p>');
-	    }
+                if ('主料' in info[name]){
+                    $('#info').append('<p>' + '<img src="https://raw.githubusercontent.com/ngl567/CookBook-KG/master/visualization/recipe_photo/' + name + '.jpg" />' + '</p>');
+                }
             }
 
             for (var key in info[name]) {
@@ -1022,18 +909,18 @@ $(document).ready(function() {
                 }
 
                 $('#info').append('<p><span>' + key + '</span></p>');
-		var item_info = '';
-		count = 0
-		for (var food_item in info[name][key]){
-			if (count == 0){
-				item_info = item_info + info[name][key][food_item];
-			}
-			else{
-				item_info = item_info + "&nbsp;||&nbsp;" + info[name][key][food_item];
-			}
-			count = count + 1;
-		}
-		$('#info').append('<p>' + item_info + '</p>');
+                var item_info = '';
+                count = 0
+                for (var food_item in info[name][key]){
+                    if (count == 0){
+                        item_info = item_info + info[name][key][food_item];
+                    }
+                    else{
+                        item_info = item_info + "&nbsp;||&nbsp;" + info[name][key][food_item];
+                    }
+                    count = count + 1;
+                }
+                $('#info').append('<p>' + item_info + '</p>');
             }
 
             d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
@@ -1097,7 +984,7 @@ $(document).ready(function() {
     // 处理鼠标移开的事件上
     $('#svg1').on('mouseleave', '.nodes circle', function(event) {
         if (!dragging && $('#search input').val() != '') {
-	    /*
+        /*
             //如果搜索框还有东西，移开鼠标后仍然显示搜索的结果
             var name = $('#search input').val();
             d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d) {
@@ -1117,11 +1004,11 @@ $(document).ready(function() {
             d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 return 'inactive';
             });
-	    //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
-	    d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', function(d) {
+        //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
+        d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', function(d) {
                 return 0;
             });
-	    */
+        */
         }
         else if (!dragging && $('#search input').val() == '') {
             // 否则，离开时把nodes和links的inactive去掉
@@ -1129,49 +1016,49 @@ $(document).ready(function() {
             //d3.select('#svg1 .nodes').selectAll('circle').attr('class', '');;
             //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
             d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', 0);
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
         }
     });
@@ -1186,19 +1073,17 @@ $(document).ready(function() {
             $('#info p').remove();
 
             
-	    // 增加各个人物的头像
+            // 增加各个人物的头像
             if (typeof(info[name]) != "undefined") {
                 //avatar_ID = info[name]['ID'][0]
                 //if(outlier_avatar_ID.indexOf(avatar_ID) != -1) {
                 //    avatar_ID = avatar_ID + '0'
                 //}
 
-	    if ('主料' in info[name]){
-                $('#info').append('<p>' + '<img src="https://raw.githubusercontent.com/ngl567/CookBook-KG/master/visualization/recipe_photo/' + name + '.jpg" />' + '</p>');
-	    }
-
+                if ('主料' in info[name]){
+                        $('#info').append('<p>' + '<img src="https://raw.githubusercontent.com/ngl567/CookBook-KG/master/visualization/recipe_photo/' + name + '.jpg" />' + '</p>');
+                }
             }
-	    
 
             for (var key in info[name]) {
                 value = info[name][key];
@@ -1214,19 +1099,19 @@ $(document).ready(function() {
                     continue;
                 }
 
-		$('#info').append('<p><span>' + key + '</span></p>');
-		var item_info = '';
-		count = 0
-		for (var food_item in info[name][key]){
-			if (count == 0){
-				item_info = item_info + info[name][key][food_item];
-			}
-			else{
-				item_info = item_info + "&nbsp;||&nbsp;" + info[name][key][food_item];
-			}
-			count = count + 1;
-		}
-		$('#info').append('<p>' + item_info + '</p>');
+                $('#info').append('<p><span>' + key + '</span></p>');
+                var item_info = '';
+                count = 0
+                for (var food_item in info[name][key]){
+                    if (count == 0){
+                        item_info = item_info + info[name][key][food_item];
+                    }
+                    else{
+                        item_info = item_info + "&nbsp;||&nbsp;" + info[name][key][food_item];
+                    }
+                    count = count + 1;
+                }
+                $('#info').append('<p>' + item_info + '</p>');
                 //$('#info').append('<p><span>' + key + '</span>' + info[name][key] + '</p>');
             }
 
@@ -1289,7 +1174,7 @@ $(document).ready(function() {
 
     $('#svg1').on('mouseleave', '.texts text', function(event) {
         if (!dragging && $('#search input').val() != '') {
-	    /*
+        /*
             // 如果搜索框还有东西，移开鼠标后仍然显示搜索的结果
             var name = $('#search input').val();
             d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d) {
@@ -1309,11 +1194,11 @@ $(document).ready(function() {
             d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 return 'inactive';
             });
-	    //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
-	    d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', function(d) {
+        //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
+        d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', function(d) {
                 return 0;
             });
-	    */
+        */
         }
         else if (!dragging && $('#search input').val() == '') {
             // 否则，离开时把nodes和links的inactive去掉
@@ -1321,49 +1206,49 @@ $(document).ready(function() {
             //d3.select('#svg1 .nodes').selectAll('circle').attr('class', '');;
             //d3.select('#svg1 .links').selectAll('line').attr('class', '');;
             d3.select("#svg1 .linetexts").selectAll('text').attr('fill-opacity', 0);
-	    d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
+            d3.select('#svg1 .nodes').selectAll('circle').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
-	    d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
+            d3.select("#svg1 .links").selectAll('line').attr('class', function(d) {
                 if ((d.source.group == 0 || d.target.group == 0) && sw1 == false) {
                     return 'inactive';
                 }
-		else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
-		    return 'inactive';
-		}
-		else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
-		    return 'inactive';
-		}
-		else{
-		    return '';
-		}
+                else if ((d.source.group == 1 || d.target.group == 1) && sw2 == false){
+                    return 'inactive';
+                }
+                else if ((d.source.group == 2 || d.target.group == 2) && sw3 == false){
+                    return 'inactive';
+                }
+                else{
+                    return '';
+                }
             });
-	    d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
+            d3.select('#svg1 .texts').selectAll('text').attr('class', function(d){
                 // 当前选中类型实体显示
-		if (d.group == 0 && sw1 == true) {
-		    return '';
-		}
-		else if (d.group == 1 && sw2 == true){
-		    return '';
-		}
-		else if (d.group == 2 && sw3 == true){
-		    return '';
-		}
-		else{
-		    return 'inactive'
-		}
+                if (d.group == 0 && sw1 == true) {
+                    return '';
+                }
+                else if (d.group == 1 && sw2 == true){
+                    return '';
+                }
+                else if (d.group == 2 && sw3 == true){
+                    return '';
+                }
+                else{
+                    return 'inactive'
+                }
             });
         }
     });
